@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Contabanconote">
+
+    <title>Contabanconote</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .row {
+            margin: 15px 0;
+        }
+
+        .counter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .counter input {
+            width: 70px;
+            padding: 8px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .btn {
+            width: 35px;
+            height: 35px;
+            font-size: 22px;
+            font-weight: bold;
+            border: none;
+            background: #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .btn:active {
+            background: #bbb;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        #totale {
+            font-size: 24px;
+            margin-top: 25px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Contabanconote</h1>
+
+    <div class="row">
+        <label>Banconote da 100€:</label>
+        <div class="counter">
+            <button class="btn" onclick="changeValue('b100', -1)">-</button>
+            <input id="b100" type="number" value="0">
+            <button class="btn" onclick="changeValue('b100', 1)">+</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <label>Banconote da 50€:</label>
+        <div class="counter">
+            <button class="btn" onclick="changeValue('b50', -1)">-</button>
+            <input id="b50" type="number" value="0">
+            <button class="btn" onclick="changeValue('b50', 1)">+</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <label>Banconote da 20€:</label>
+        <div class="counter">
+            <button class="btn" onclick="changeValue('b20', -1)">-</button>
+            <input id="b20" type="number" value="0">
+            <button class="btn" onclick="changeValue('b20', 1)">+</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <label>Banconote da 10€:</label>
+        <div class="counter">
+            <button class="btn" onclick="changeValue('b10', -1)">-</button>
+            <input id="b10" type="number" value="0">
+            <button class="btn" onclick="changeValue('b10', 1)">+</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <label>Banconote da 5€:</label>
+        <div class="counter">
+            <button class="btn" onclick="changeValue('b5', -1)">-</button>
+            <input id="b5" type="number" value="0">
+            <button class="btn" onclick="changeValue('b5', 1)">+</button>
+        </div>
+    </div>
+
+    <button onclick="calcola()"style="background:green; color:white; border-radius:20px;" >Calcola Totale</button>
+	<button onclick="resetCampi()" style="background:red; color:white; border-radius:20px;">Reset Totale</button>
+
+    <div id="totale">Totale: 0 €</div>
+
+    <script>
+        function changeValue(id, amount) {
+            const input = document.getElementById(id);
+            let value = parseInt(input.value) || 0;
+            value += amount;
+            if (value < 0) value = 0;
+            input.value = value;
+            // NON aggiorna il totale automaticamente
+        }
+
+        function calcola() {
+            let b100 = parseInt(document.getElementById("b100").value) || 0;
+            let b50  = parseInt(document.getElementById("b50").value) || 0;
+            let b20  = parseInt(document.getElementById("b20").value) || 0;
+            let b10  = parseInt(document.getElementById("b10").value) || 0;
+            let b5   = parseInt(document.getElementById("b5").value) || 0;
+
+            let totale = (b100 * 100) + (b50 * 50) + (b20 * 20) + (b10 * 10) + (b5 * 5);
+
+            document.getElementById("totale").innerText = "Totale: " + totale + " €";
+        }
+		
+		function resetCampi() {
+    document.getElementById("b100").value = 0;
+    document.getElementById("b50").value = 0;
+    document.getElementById("b20").value = 0;
+    document.getElementById("b10").value = 0;
+    document.getElementById("b5").value = 0;
+
+    document.getElementById("totale").innerText = "Totale: 0 €";
+}
+
+    </script>
+
+</body>
+</html>
