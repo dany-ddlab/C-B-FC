@@ -150,22 +150,18 @@
             input.value = value;
         }
 
-       function calcola() {
-    let b100 = parseInt(document.getElementById("b100").value) || 0;
-    let b50  = parseInt(document.getElementById("b50").value) || 0;
-    let b20  = parseInt(document.getElementById("b20").value) || 0;
-    let b10  = parseInt(document.getElementById("b10").value) || 0;
-    let b5   = parseInt(document.getElementById("b5").value) || 0;
+        function calcola() {
+            let b100 = parseInt(document.getElementById("b100").value) || 0;
+            let b50  = parseInt(document.getElementById("b50").value) || 0;
+            let b20  = parseInt(document.getElementById("b20").value) || 0;
+            let b10  = parseInt(document.getElementById("b10").value) || 0;
+            let b5   = parseInt(document.getElementById("b5").value) || 0;
 
-    let totale = (b100 * 100) + (b50 * 50) + (b20 * 20) + (b10 * 10) + (b5 * 5);
+            let totale = (b100 * 100) + (b50 * 50) + (b20 * 20) + (b10 * 10) + (b5 * 5);
 
-    // ⭐ FORMATTATORE CON PUNTI
-    let formattato = totale.toLocaleString('it-IT');
+            let formattato = totale.toLocaleString('it-IT');
 
-    document.getElementById("totale").innerText = "Totale: " + formattato + " €";
-}
-
-
+            document.getElementById("totale").innerText = "Totale: " + formattato + " €";
         }
 
         function resetCampi() {
@@ -181,5 +177,3 @@
 
 </body>
 </html>
-
-
