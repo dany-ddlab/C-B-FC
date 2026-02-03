@@ -1,8 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+
 
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -17,11 +19,9 @@
             padding: 20px;
             text-align: center;
         }
-
         h1 {
             margin-bottom: 20px;
         }
-
         .row {
             margin: 15px 0;
         }
@@ -30,9 +30,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 6px;
+            gap: 10px;
             margin-top: 5px;
-            flex-wrap: wrap;
         }
 
         .counter input {
@@ -43,21 +42,16 @@
         }
 
         .btn {
-            width: 45px;
-            height: 45px;
+            width: 35px;
+            height: 35px;
             font-size: 22px;
             font-weight: bold;
             border: none;
             background: #ddd;
-            border-radius: 8px;
+            border-radius: 6px;
             cursor: pointer;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0;
-            -webkit-appearance: none;
-            appearance: none;
+			/* FIX per iPhone */ display: flex; justify-content: center; align-items: center; padding: 0; -webkit-appearance: none; appearance: none;
         }
 
         .btn:active {
@@ -81,7 +75,6 @@
 
     <h1>Contabanconote</h1>
 
-    <!-- 100€ -->
     <div class="row">
         <label>Banconote da 100€:</label>
         <div class="counter">
@@ -91,7 +84,6 @@
         </div>
     </div>
 
-    <!-- 50€ -->
     <div class="row">
         <label>Banconote da 50€:</label>
         <div class="counter">
@@ -101,7 +93,6 @@
         </div>
     </div>
 
-    <!-- 20€ -->
     <div class="row">
         <label>Banconote da 20€:</label>
         <div class="counter">
@@ -111,7 +102,6 @@
         </div>
     </div>
 
-    <!-- 10€ -->
     <div class="row">
         <label>Banconote da 10€:</label>
         <div class="counter">
@@ -121,7 +111,6 @@
         </div>
     </div>
 
-    <!-- 5€ -->
     <div class="row">
         <label>Banconote da 5€:</label>
         <div class="counter">
@@ -131,8 +120,8 @@
         </div>
     </div>
 
-    <button onclick="calcola()" style="background:green; color:white; border-radius:20px;">Calcola Totale</button>
-    <button onclick="resetCampi()" style="background:red; color:white; border-radius:20px;">Reset Totale</button>
+    <button onclick="calcola()"style="background:green; color:white; border-radius:20px;" >Calcola Totale</button>
+	<button onclick="resetCampi()" style="background:red; color:white; border-radius:20px;">Reset Totale</button>
 
     <div id="totale">Totale: 0 €</div>
 
@@ -143,6 +132,7 @@
             value += amount;
             if (value < 0) value = 0;
             input.value = value;
+            // NON aggiorna il totale automaticamente
         }
 
         function calcola() {
@@ -154,41 +144,22 @@
 
             let totale = (b100 * 100) + (b50 * 50) + (b20 * 20) + (b10 * 10) + (b5 * 5);
 
-            let formattato = totale.toLocaleString('it-IT');
-
-            document.getElementById("totale").innerText = "Totale: " + formattato + " €";
+            document.getElementById("totale").innerText = "Totale: " + totale + " €";
         }
+		
+		function resetCampi() {
+    document.getElementById("b100").value = 0;
+    document.getElementById("b50").value = 0;
+    document.getElementById("b20").value = 0;
+    document.getElementById("b10").value = 0;
+    document.getElementById("b5").value = 0;
 
-        function resetCampi() {
-            document.getElementById("b100").value = 0;
-            document.getElementById("b50").value = 0;
-            document.getElementById("b20").value = 0;
-            document.getElementById("b10").value = 0;
-            document.getElementById("b5").value = 0;
+    document.getElementById("totale").innerText = "Totale: 0 €";
+}
 
-            document.getElementById("totale").innerText = "Totale: 0 €";
-        }
-    </script>
-
-    <!-- ⭐ FIX ANTI-ZOOM PERFETTO PER iPHONE -->
-    <script>
-    // blocca pinch‑zoom
-    document.addEventListener('touchstart', function (e) {
-        if (e.touches.length > 1) {
-            e.preventDefault();
-        }
-    }, { passive: false });
-
-    // blocca solo il doppio‑tap, NON i tap veloci
-    let lastTouch = 0;
-    document.addEventListener('touchend', function (e) {
-        const now = Date.now();
-        if (now - lastTouch < 250) {
-            e.preventDefault();
-        }
-        lastTouch = now;
-    }, { passive: false });
     </script>
 
 </body>
 </html>
+
+
