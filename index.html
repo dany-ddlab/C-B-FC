@@ -45,7 +45,7 @@
         .btn {
             width: 45px;
             height: 45px;
-            font-size: 18px;
+            font-size: 22px;
             font-weight: bold;
             border: none;
             background: #ddd;
@@ -86,11 +86,9 @@
     <div class="row">
         <label>Banconote da 100€:</label>
         <div class="counter">
-            <button class="btn" onclick="changeValue('b100', -10)">-10</button>
             <button class="btn" onclick="changeValue('b100', -1)">-</button>
             <input id="b100" type="number" value="0">
             <button class="btn" onclick="changeValue('b100', 1)">+</button>
-            <button class="btn" onclick="changeValue('b100', 10)">+10</button>
         </div>
     </div>
 
@@ -98,11 +96,9 @@
     <div class="row">
         <label>Banconote da 50€:</label>
         <div class="counter">
-            <button class="btn" onclick="changeValue('b50', -10)">-10</button>
             <button class="btn" onclick="changeValue('b50', -1)">-</button>
             <input id="b50" type="number" value="0">
             <button class="btn" onclick="changeValue('b50', 1)">+</button>
-            <button class="btn" onclick="changeValue('b50', 10)">+10</button>
         </div>
     </div>
 
@@ -110,11 +106,9 @@
     <div class="row">
         <label>Banconote da 20€:</label>
         <div class="counter">
-            <button class="btn" onclick="changeValue('b20', -10)">-10</button>
             <button class="btn" onclick="changeValue('b20', -1)">-</button>
             <input id="b20" type="number" value="0">
             <button class="btn" onclick="changeValue('b20', 1)">+</button>
-            <button class="btn" onclick="changeValue('b20', 10)">+10</button>
         </div>
     </div>
 
@@ -122,11 +116,9 @@
     <div class="row">
         <label>Banconote da 10€:</label>
         <div class="counter">
-            <button class="btn" onclick="changeValue('b10', -10)">-10</button>
             <button class="btn" onclick="changeValue('b10', -1)">-</button>
             <input id="b10" type="number" value="0">
             <button class="btn" onclick="changeValue('b10', 1)">+</button>
-            <button class="btn" onclick="changeValue('b10', 10)">+10</button>
         </div>
     </div>
 
@@ -134,11 +126,9 @@
     <div class="row">
         <label>Banconote da 5€:</label>
         <div class="counter">
-            <button class="btn" onclick="changeValue('b5', -10)">-10</button>
             <button class="btn" onclick="changeValue('b5', -1)">-</button>
             <input id="b5" type="number" value="0">
             <button class="btn" onclick="changeValue('b5', 1)">+</button>
-            <button class="btn" onclick="changeValue('b5', 10)">+10</button>
         </div>
     </div>
 
@@ -165,7 +155,10 @@
 
             let totale = (b100 * 100) + (b50 * 50) + (b20 * 20) + (b10 * 10) + (b5 * 5);
 
-            document.getElementById("totale").innerText = "Totale: " + totale + " €";
+            // ⭐ FORMATTATORE CON PUNTI
+            let formattato = totale.toLocaleString('it-IT');
+
+            document.getElementById("totale").innerText = "Totale: " + formattato + " €";
         }
 
         function resetCampi() {
@@ -179,16 +172,16 @@
         }
     </script>
 
-    <!-- ⭐ FIX DEFINITIVO ANTI-ZOOM iPHONE -->
+    <!-- ⭐ FIX ANTI-ZOOM MIGLIORATO -->
     <script>
     let lastTouch = 0;
-    document.addEventListener('touchend', function (e) {
+    document.addEventListener('touchstart', function (e) {
         const now = Date.now();
-        if (now - lastTouch <= 300) {
+        if (now - lastTouch <= 350) {
             e.preventDefault(); // blocca doppio tap zoom
         }
         lastTouch = now;
-    }, false);
+    }, { passive: false });
     </script>
 
 </body>
