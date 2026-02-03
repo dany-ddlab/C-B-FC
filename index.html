@@ -157,10 +157,17 @@
             let b10  = Number(document.getElementById("b10").value) || 0;
             let b5   = Number(document.getElementById("b5").value) || 0;
 
-            let totale = (b100 * 100) + (b50 * 50) + (b20 * 20) + (b10 * 10) + (b5 * 5);
+            // ⭐ totale SEMPRE numero vero
+            let totale = Number(
+                (b100 * 100) +
+                (b50 * 50) +
+                (b20 * 20) +
+                (b10 * 10) +
+                (b5 * 5)
+            );
 
-            // ⭐ FORMATTATORE CHE FUNZIONA SEMPRE
-            let formattato = Number(totale).toLocaleString('it-IT');
+            // ⭐ formattazione SEMPRE applicata
+            let formattato = totale.toLocaleString('it-IT');
 
             document.getElementById("totale").innerText = "Totale: " + formattato + " €";
         }
