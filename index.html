@@ -144,22 +144,23 @@
     <script>
         function changeValue(id, amount) {
             const input = document.getElementById(id);
-            let value = parseInt(input.value) || 0;
+            let value = Number(input.value) || 0;
             value += amount;
             if (value < 0) value = 0;
             input.value = value;
         }
 
         function calcola() {
-            let b100 = parseInt(document.getElementById("b100").value) || 0;
-            let b50  = parseInt(document.getElementById("b50").value) || 0;
-            let b20  = parseInt(document.getElementById("b20").value) || 0;
-            let b10  = parseInt(document.getElementById("b10").value) || 0;
-            let b5   = parseInt(document.getElementById("b5").value) || 0;
+            let b100 = Number(document.getElementById("b100").value) || 0;
+            let b50  = Number(document.getElementById("b50").value) || 0;
+            let b20  = Number(document.getElementById("b20").value) || 0;
+            let b10  = Number(document.getElementById("b10").value) || 0;
+            let b5   = Number(document.getElementById("b5").value) || 0;
 
             let totale = (b100 * 100) + (b50 * 50) + (b20 * 20) + (b10 * 10) + (b5 * 5);
 
-            let formattato = totale.toLocaleString('it-IT');
+            // ⭐ FORMATTATORE CHE FUNZIONA SEMPRE
+            let formattato = Number(totale).toLocaleString('it-IT');
 
             document.getElementById("totale").innerText = "Totale: " + formattato + " €";
         }
