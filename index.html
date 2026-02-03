@@ -13,6 +13,7 @@
     <title>Contabanconote</title>
 
     <style>
+		
         body {
             font-family: Arial, sans-serif;
             background: #f2f2f2;
@@ -126,6 +127,24 @@
     <div id="totale">Totale: 0 €</div>
 
     <script>
+// blocca pinch‑zoom (zoom con due dita)
+document.addEventListener('touchstart', function (e) {
+    if (e.touches.length > 1) {
+        e.preventDefault();
+    }
+}, { passive: false });
+
+// blocca SOLO il doppio‑tap, NON i tap veloci
+let lastTouch = 0;
+document.addEventListener('touchend', function (e) {
+    const now = Date.now();
+    if (now - lastTouch < 300) {
+        e.preventDefault(); // blocca doppio tap zoom
+    }
+    lastTouch = now;
+}, { passive: false });
+
+
         function changeValue(id, amount) {
             const input = document.getElementById(id);
             let value = parseInt(input.value) || 0;
@@ -161,5 +180,6 @@
 
 </body>
 </html>
+
 
 
