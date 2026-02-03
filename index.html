@@ -179,5 +179,17 @@
         }
     </script>
 
+    <!-- ⭐ FIX DEFINITIVO ANTI-ZOOM iPHONE -->
+    <script>
+    let lastTouch = 0;
+    document.addEventListener('touchend', function (e) {
+        const now = Date.now();
+        if (now - lastTouch <= 300) {
+            e.preventDefault(); // blocca doppio tap zoom
+        }
+        lastTouch = now;
+    }, false);
+    </script>
+
 </body>
 </html>
