@@ -167,7 +167,7 @@
             );
 
             // ⭐ formattazione SEMPRE applicata
-            let formattato = totale.toLocaleString('it-IT');
+            let formattato = totale.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
             document.getElementById("totale").innerText = "Totale: " + formattato + " €";
         }
@@ -185,3 +185,4 @@
 
 </body>
 </html>
+
