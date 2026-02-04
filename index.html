@@ -23,14 +23,14 @@
             transition: background 0.3s, color 0.3s;
         }
 
-        /* ⭐ BANNER SUPERIORE */
+        /* ⭐ BANNER A DUE COLONNE */
         .top-bar {
             width: 100%;
-            height: 65px; /* altezza fissa */
+            height: 65px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between; /* titolo a sinistra, pulsante a destra */
             align-items: center;
-            position: relative;
+            padding: 0 20px;
             margin-bottom: 20px;
 
             background: rgba(0, 0, 0, 0.03);
@@ -39,31 +39,22 @@
             transition: background 0.3s, border-color 0.3s;
         }
 
-        .left-slot {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
+        .title-box h1 {
+            margin: 0;
+            font-size: 26px;
         }
 
-        .logo {
-            height: 40px;
+        .theme-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .theme-btn {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
             font-size: 32px;
             background: none;
             border: none;
             cursor: pointer;
-        }
-
-        h1 {
-            margin: 0;
-            font-size: 26px;
         }
 
         .row {
@@ -176,16 +167,15 @@
 </head>
 <body>
 
-    <!-- ⭐ BANNER -->
+    <!-- ⭐ BANNER A DUE COLONNE -->
     <div class="top-bar">
-        <div class="left-slot">
-            <!-- Logo opzionale -->
-            <!-- <img src="logo.png" class="logo"> -->
+        <div class="title-box">
+            <h1>Contabanconote</h1>
         </div>
 
-        <h1>Contabanconote</h1>
-
-        <button id="themeToggle" class="theme-btn" onclick="toggleTheme()">🌙</button>
+        <div class="theme-box">
+            <button id="themeToggle" class="theme-btn" onclick="toggleTheme()">🌙</button>
+        </div>
     </div>
 
     <!-- 100€ -->
